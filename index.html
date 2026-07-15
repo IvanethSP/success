@@ -1,26 +1,588 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1" />
-    <meta name="theme-color" content="#2B7A3D" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="SUCCESS" />
-    <meta name="description" content="SUCCESS - Tu asesor nutricional inteligente con productos FUXION y red de bienestar MLM" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>SUCCESS - Tu Asesor Nutricional Inteligente</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {});
-        });
-      }
-    </script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beehavior Intelligence — Human Collective Intelligence Infrastructure</title>
+<meta name="description" content="Beehavior construye la capa de inteligencia humana colectiva. La primera infraestructura que mide, modela y fortalece cómo cooperan, confían y evolucionan las comunidades.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --plum:#1C0F1A; --plum2:#2A1628; --rose:#B85C63; --rose2:#CC7279;
+  --gold:#B8860A; --gold2:#D4A820; --sage:#4A7A52; --sage2:#6B9E73;
+  --cream:#F8F5F0; --cream2:#EDE8E0; --sand:#DDD5C8;
+  --taupe:#5A4E46; --charcoal:#1E1612; --white:#FFFFFF;
+  --bl:#E8E0D5; --bd:#3A2535;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--charcoal);font-family:'Inter',sans-serif;overflow-x:hidden}
+
+/* ──────── NAV ──────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:all .3s}
+nav.scrolled{background:rgba(248,245,240,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--bl);box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.logo{display:flex;align-items:center;gap:.4rem;font-size:.95rem;font-weight:600;color:var(--white);letter-spacing:.06em;text-decoration:none;flex-shrink:0}
+nav.scrolled .logo{color:var(--plum)}
+.nav-center{display:flex;gap:1.5rem;flex-wrap:wrap}
+.nav-center a{font-size:.75rem;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s;white-space:nowrap}
+nav.scrolled .nav-center a{color:var(--taupe)}
+.nav-center a:hover{color:var(--white)}
+nav.scrolled .nav-center a:hover{color:var(--charcoal)}
+.nav-right{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+.lang-btn{background:transparent;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);font-size:.7rem;font-weight:500;padding:.35rem .7rem;cursor:pointer;letter-spacing:.06em;font-family:'Inter',sans-serif;border-radius:2px;transition:all .2s;white-space:nowrap}
+.lang-btn:hover{border-color:rgba(255,255,255,.5);color:var(--white)}
+nav.scrolled .lang-btn{border-color:var(--bl);color:var(--taupe)}
+nav.scrolled .lang-btn:hover{border-color:var(--rose);color:var(--rose)}
+.nav-cta{background:var(--rose);color:var(--white);font-size:.72rem;font-weight:600;padding:.42rem 1rem;letter-spacing:.05em;text-decoration:none;border-radius:2px;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--rose2)}
+nav.scrolled .nav-cta{background:var(--plum)}
+
+/* ──────── HERO ──────── */
+#hero{min-height:100svh;position:relative;display:flex;align-items:center;overflow:hidden;background:var(--plum);padding:6rem 2rem 8rem}
+#particle-canvas{position:absolute;inset:0;z-index:0;display:block}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 25% 50%,rgba(184,92,99,.12) 0%,transparent 60%),radial-gradient(ellipse 35% 45% at 85% 25%,rgba(184,134,10,.06) 0%,transparent 50%);z-index:1;pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hero-left{} 
+.hero-eyebrow{font-size:.68rem;letter-spacing:.2em;color:rgba(184,92,99,.85);font-weight:500;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem}
+.hero-eyebrow::after{content:'';width:40px;height:1px;background:rgba(184,92,99,.4)}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.6rem);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:0}
+h1.hero-title em{font-style:italic;color:var(--rose2)}
+.hero-right{display:flex;flex-direction:column;gap:1.5rem;padding-top:.5rem}
+.hero-sub{font-size:.93rem;color:rgba(255,255,255,.62);line-height:1.8;font-weight:300}
+.hero-sub strong{color:rgba(255,255,255,.88);font-weight:500}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary{background:var(--rose);color:var(--white);font-size:.78rem;font-weight:600;padding:.72rem 1.6rem;letter-spacing:.05em;text-decoration:none;border-radius:2px;transition:all .22s;display:inline-block}
+.btn-primary:hover{background:var(--rose2);transform:translateY(-1px)}
+.btn-ghost{font-size:.76rem;color:rgba(255,255,255,.45);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem;transition:color .2s;letter-spacing:.04em;padding:.72rem 0}
+.btn-ghost:hover{color:rgba(255,255,255,.8)}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.pill{font-size:.65rem;letter-spacing:.07em;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);padding:.22rem .65rem;border-radius:20px}
+
+/* hero stats row */
+.hero-stats-row{position:absolute;bottom:0;left:0;right:0;z-index:2;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08);padding:1.2rem 2rem;display:flex;gap:0;max-width:100%}
+.hstat{flex:1;padding:0 1.5rem;border-right:1px solid rgba(255,255,255,.08)}
+.hstat:first-child{padding-left:calc((100% - 1100px)/2 + 1.5rem)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--white);line-height:1}
+.hstat-l{font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.08em;margin-top:.22rem;text-transform:uppercase}
+
+/* ──────── CONNECT ──────── */
+#connect{background:var(--plum2);padding:3rem 2rem;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.connect-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:3rem;align-items:center}
+.cl-label{font-size:.65rem;letter-spacing:.18em;color:var(--rose2);text-transform:uppercase;font-weight:600;margin-bottom:.6rem}
+.cl-title{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--white);margin-bottom:.5rem;line-height:1.25}
+.cl-sub{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.7;font-weight:300}
+.role-prompt{font-size:.64rem;color:rgba(255,255,255,.38);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.55rem}
+.roles{display:flex;flex-wrap:wrap;gap:.38rem;margin-bottom:.9rem}
+.role-btn{background:transparent;border:1px solid var(--bd);color:rgba(255,255,255,.4);font-size:.72rem;padding:.32rem .75rem;cursor:pointer;letter-spacing:.04em;font-family:'Inter',sans-serif;transition:all .2s;border-radius:2px}
+.role-btn:hover,.role-btn.active{border-color:var(--rose2);color:var(--rose2);background:rgba(184,92,99,.08)}
+.c-row{display:flex;gap:.5rem}
+.c-input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:var(--white);font-size:.82rem;padding:.62rem .9rem;outline:none;transition:border .2s;font-family:'Inter',sans-serif;border-radius:2px;min-width:0}
+.c-input:focus{border-color:var(--rose)}
+.c-input::placeholder{color:rgba(255,255,255,.22)}
+.c-btn{background:var(--rose);color:var(--white);font-weight:600;font-size:.75rem;padding:.62rem 1.2rem;border:none;cursor:pointer;letter-spacing:.05em;font-family:'Inter',sans-serif;border-radius:2px;transition:background .2s;white-space:nowrap}
+.c-btn:hover{background:var(--rose2)}
+
+/* ──────── SECTIONS ──────── */
+.sec{padding:5rem 2rem}
+.inner{max-width:1100px;margin:0 auto}
+.eyebrow{font-size:.65rem;letter-spacing:.18em;color:var(--rose);text-transform:uppercase;font-weight:600;margin-bottom:.8rem}
+.eyebrow.sage{color:var(--sage)}
+.eyebrow.gold{color:var(--gold)}
+h2.serif{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;color:var(--charcoal);margin-bottom:.75rem;line-height:1.15}
+.sec-sub{font-size:.9rem;color:var(--taupe);line-height:1.75;max-width:540px;font-weight:400}
+.sec-hdr{margin-bottom:2.8rem}
+
+/* ──────── FRAMEWORK ──────── */
+#framework{background:var(--cream)}
+.fw-layers{display:flex;flex-direction:column;gap:.5rem}
+.fw-layer{display:grid;grid-template-columns:200px 1fr 130px;gap:1.8rem;align-items:center;padding:1.3rem 1.6rem;border:1px solid var(--bl);background:var(--white);transition:all .22s;border-radius:4px;cursor:default}
+.fw-layer:hover{border-color:var(--rose);box-shadow:0 2px 16px rgba(184,92,99,.09);transform:translateX(4px)}
+.fw-num{font-size:.65rem;font-weight:600;color:var(--rose);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.18rem}
+.fw-name{font-size:.95rem;font-weight:600;color:var(--charcoal)}
+.fw-desc{font-size:.82rem;color:var(--taupe);line-height:1.55}
+.fw-tag{font-size:.62rem;letter-spacing:.09em;color:var(--sage);border:1px solid rgba(74,122,82,.28);padding:.22rem .55rem;border-radius:2px;white-space:nowrap;justify-self:end;background:rgba(74,122,82,.05)}
+
+/* ──────── PILLARS ──────── */
+#pillars{background:var(--cream2);padding:0}
+.pillars-wrap{max-width:1100px;margin:0 auto;padding:5rem 2rem 2.5rem}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bl)}
+.pillar{background:var(--white);padding:1.8rem 1.4rem;transition:background .2s}
+.pillar:hover{background:var(--cream)}
+.p-icon{font-size:1.4rem;margin-bottom:.8rem}
+.p-line{width:24px;height:2px;margin-bottom:.8rem;border-radius:1px}
+.p-title{font-size:.68rem;letter-spacing:.14em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem}
+.p-desc{font-size:.81rem;color:var(--taupe);line-height:1.6}
+
+/* ──────── PAIN / SOLUTIONS ──────── */
+#solutions{background:var(--plum);padding:5rem 2rem}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);max-width:1100px;margin:0 auto}
+.pain-card{background:var(--plum2);padding:2rem 1.6rem}
+.pain-top{display:flex;align-items:center;gap:.6rem;margin-bottom:1.1rem}
+.pain-icon-box{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:.9rem;border:1px solid;border-radius:2px;flex-shrink:0}
+.pain-title-txt{font-size:.66rem;letter-spacing:.13em;font-weight:700;text-transform:uppercase}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:.42rem}
+.pain-list li{font-size:.8rem;color:rgba(255,255,255,.5);padding-left:.85rem;position:relative;line-height:1.45}
+.pain-list li::before{content:'—';position:absolute;left:0;font-size:.62rem;opacity:.5}
+.pain-footer-tag{font-size:.6rem;letter-spacing:.09em;color:rgba(255,255,255,.2);margin-top:1.1rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.07)}
+
+/* ──────── ALLIANCES ──────── */
+#alliances{background:var(--cream);padding:5rem 2rem}
+.all-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;max-width:1100px;margin:0 auto}
+.ally{background:var(--white);border:1px solid var(--bl);padding:1.8rem;border-radius:4px;transition:all .22s}
+.ally:hover{border-color:var(--rose);box-shadow:0 4px 20px rgba(184,92,99,.09)}
+.ally-badge{font-size:.58rem;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;font-weight:600;padding:.18rem .5rem;border:1px solid rgba(184,134,10,.25);border-radius:2px;display:inline-block;margin-bottom:.8rem;background:rgba(184,134,10,.04)}
+.ally-name{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:.6rem}
+.ally-desc{font-size:.81rem;color:var(--taupe);line-height:1.62}
+.ally-royalty{font-size:.7rem;color:var(--sage);margin-top:.85rem;padding-top:.75rem;border-top:1px solid var(--bl);font-weight:500}
+
+/* ──────── GRANTS ──────── */
+#grants{background:var(--cream2);padding:3rem 2rem 5rem}
+.grants-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;max-width:1100px;margin:0 auto}
+.grant{background:var(--white);border:1px solid var(--bl);padding:1rem 1.2rem;display:flex;align-items:center;gap:.8rem;border-radius:4px;transition:all .2s}
+.grant:hover{border-color:var(--sage);background:var(--cream)}
+.grant-ico{font-size:1.1rem;flex-shrink:0}
+.grant-name{font-size:.82rem;font-weight:600;color:var(--charcoal)}
+.grant-sub{font-size:.7rem;color:var(--taupe)}
+
+/* ──────── STATS ──────── */
+#stats{background:var(--plum2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:3.5rem 2rem}
+.stats-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:1.2rem}
+.stat{border-left:1px solid rgba(255,255,255,.08);padding-left:1rem}
+.stat:first-child{border-left:none;padding-left:0}
+.stat-n{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;line-height:1;color:var(--white)}
+.stat-n.rose{color:var(--rose2)}
+.stat-n.gold{color:var(--gold2)}
+.stat-n.sage{color:var(--sage2)}
+.stat-l{font-size:.62rem;color:rgba(255,255,255,.32);letter-spacing:.07em;margin-top:.28rem;line-height:1.38;text-transform:uppercase}
+
+/* ──────── JOIN ──────── */
+#join{background:var(--cream);text-align:center;padding:6.5rem 2rem}
+h2.join-t{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;color:var(--charcoal);margin-bottom:.75rem;line-height:1.12}
+h2.join-t em{font-style:italic;color:var(--rose)}
+.join-sub{font-size:.9rem;color:var(--taupe);max-width:440px;margin:0 auto 2.2rem;line-height:1.75}
+.join-btn{background:var(--plum);color:var(--white);font-size:.8rem;font-weight:600;padding:.82rem 1.9rem;letter-spacing:.05em;text-decoration:none;border-radius:2px;display:inline-block;transition:all .22s}
+.join-btn:hover{background:var(--plum2);transform:translateY(-2px);box-shadow:0 8px 22px rgba(28,15,26,.18)}
+.invest-cards{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:2.8rem}
+.i-card{border:1px solid var(--bl);padding:.9rem 1.3rem;border-radius:4px;text-align:left;background:var(--white)}
+.i-card-l{font-size:.58rem;letter-spacing:.1em;color:var(--rose);text-transform:uppercase;font-weight:600;margin-bottom:.2rem}
+.i-card-v{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--charcoal)}
+
+/* ──────── PARTNERS ──────── */
+#partners{background:var(--cream2);padding:2.5rem 2rem;border-top:1px solid var(--bl)}
+.partners-inner{max-width:1100px;margin:0 auto}
+.partners-lbl{font-size:.63rem;letter-spacing:.16em;color:var(--taupe);text-transform:uppercase;margin-bottom:1rem;font-weight:500}
+.partners-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.partner{font-size:.72rem;font-weight:500;color:var(--taupe);border:1px solid var(--bl);padding:.32rem .85rem;border-radius:2px;letter-spacing:.04em;transition:all .2s;background:var(--white)}
+.partner:hover{color:var(--charcoal);border-color:var(--sand)}
+
+/* ──────── FOOTER ──────── */
+footer{background:var(--plum);padding:4rem 2rem 2rem}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--bd)}
+.footer-logo{font-size:.95rem;font-weight:600;color:var(--white);letter-spacing:.06em;margin-bottom:.7rem}
+.footer-tag{font-size:.78rem;color:rgba(255,255,255,.28);line-height:1.7;font-weight:300;margin-bottom:1rem}
+.footer-ext{display:flex;gap:.9rem;flex-wrap:wrap}
+.footer-ext a{font-size:.72rem;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s}
+.footer-ext a:hover{color:rgba(255,255,255,.7)}
+.footer-lbl{font-size:.62rem;letter-spacing:.14em;color:rgba(255,255,255,.22);text-transform:uppercase;margin-bottom:.7rem}
+.footer-links{display:flex;flex-direction:column;gap:.38rem}
+.footer-links a{font-size:.79rem;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;font-weight:300}
+.footer-links a:hover{color:rgba(255,255,255,.75)}
+.city-row{display:flex;justify-content:space-between;align-items:center;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.city-n{font-size:.76rem;color:rgba(255,255,255,.38);font-weight:300}
+.city-t{font-size:.76rem;color:rgba(255,255,255,.2)}
+.footer-bottom{max-width:1100px;margin:1.4rem auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.67rem;color:rgba(255,255,255,.18);flex-wrap:wrap;gap:.5rem}
+.sdg-row{display:flex;gap:.3rem;flex-wrap:wrap}
+.sdg{background:rgba(74,122,82,.12);color:var(--sage2);font-size:.58rem;padding:.14rem .4rem;border:1px solid rgba(74,122,82,.2);border-radius:1px}
+
+/* ──────── FADE IN ──────── */
+.fi{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.fi.vis{opacity:1;transform:none}
+
+/* ──────── MOBILE ──────── */
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;gap:1.8rem}
+  .hero-right{padding-top:0}
+  h1.hero-title{font-size:clamp(1.9rem,7vw,2.8rem)}
+  .hstat:first-child{padding-left:1.5rem}
+  .hero-stats-row{gap:0;padding:1rem 1.5rem;overflow-x:auto}
+  .hstat{min-width:80px;padding:0 1rem}
+  .hstat:first-child{padding-left:0}
+  .fw-layer{grid-template-columns:1fr;gap:.4rem}
+  .fw-tag{justify-self:start}
+  .pillars-grid{grid-template-columns:1fr 1fr}
+  .pain-grid,.all-grid,.grants-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(3,1fr);gap:.8rem}
+  .stat{padding-left:.7rem}
+  .connect-inner{grid-template-columns:1fr;gap:1.8rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-grid > div:first-child{grid-column:1/-1}
+}
+@media(max-width:580px){
+  nav{padding:.7rem 1rem}
+  .nav-center{display:none}
+  #hero{padding:5.5rem 1.2rem 7.5rem}
+  .hero-stats-row{padding:.9rem 1.2rem}
+  .sec,.sec-pad{padding:3.5rem 1.2rem}
+  #connect{padding:2.5rem 1.2rem}
+  #solutions,#alliances,#grants,#join,#partners{padding-left:1.2rem;padding-right:1.2rem}
+  .pillars-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr;gap:1.8rem}
+  .invest-cards{gap:.5rem}
+  .i-card{padding:.7rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">🐝 <span id="logo-text">BEEHAVIOR</span></a>
+  <div class="nav-center">
+    <a href="#framework" data-es="Framework" data-en="Framework">Framework</a>
+    <a href="#solutions" data-es="Soluciones" data-en="Solutions">Soluciones</a>
+    <a href="#alliances" data-es="Alianzas" data-en="Alliances">Alianzas</a>
+    <a href="#join" data-es="Invertir" data-en="Invest">Invertir</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">EN</button>
+    <a href="#connect" class="nav-cta" data-es="CONECTAR →" data-en="CONNECT →">CONECTAR →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow" data-es="Human Collective Intelligence Infrastructure" data-en="Human Collective Intelligence Infrastructure">Human Collective Intelligence Infrastructure</div>
+      <h1 class="hero-title" data-es="Construimos la capa de inteligencia <em>humana</em> que la IA olvidó construir." data-en="Building the <em>human</em> intelligence layer that AI forgot to build.">Construimos la capa de inteligencia <em>humana</em> que la IA olvidó construir.</h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-sub" data-es="<strong>Beehavior</strong> mide, modela y fortalece cómo cooperan, confían y evolucionan las comunidades — comenzando con el ecosistema más complejo e ignorado por la tecnología: 300 millones de mujeres hispanohablantes. En alianza con <strong>Saphi · Alerta</strong>." data-en="<strong>Beehavior</strong> measures, models, and strengthens how communities cooperate, trust, and evolve — starting with the most complex ecosystem ignored by technology: 300 million Spanish-speaking women. In alliance with <strong>Saphi · Alerta</strong>."><strong>Beehavior</strong> mide, modela y fortalece cómo cooperan, confían y evolucionan las comunidades — comenzando con el ecosistema más complejo e ignorado por la tecnología: 300 millones de mujeres hispanohablantes. En alianza con <strong>Saphi · Alerta</strong>.</p>
+      <div class="hero-actions">
+        <a href="#connect" class="btn-primary" data-es="CONECTAR CON NOSOTRAS →" data-en="CONNECT WITH US →">CONECTAR CON NOSOTRAS →</a>
+        <a href="#framework" class="btn-ghost" data-es="Ver el Framework ↓" data-en="See the Framework ↓">Ver el Framework ↓</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill" data-es="B2B2C · B2G" data-en="B2B2C · B2G">B2B2C · B2G</span>
+        <span class="pill" data-es="Seed $8M · Series A $125M" data-en="Seed $8M · Series A $125M">Seed $8M · Series A $125M</span>
+        <span class="pill" data-es="7 ODS simultáneos" data-en="7 SDGs simultaneously">7 ODS simultáneos</span>
+        <span class="pill" data-es="Alianza Saphi Intl." data-en="Saphi Intl. Alliance">Alianza Saphi Intl.</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats-row">
+    <div class="hstat"><div class="hstat-n">300M</div><div class="hstat-l" data-es="Mujeres Hispanohablantes" data-en="Spanish-speaking Women">Mujeres Hispanohablantes</div></div>
+    <div class="hstat"><div class="hstat-n">$50T</div><div class="hstat-l" data-es="Consumo Anual Global" data-en="Global Annual Spending">Consumo Anual Global</div></div>
+    <div class="hstat"><div class="hstat-n">7</div><div class="hstat-l" data-es="ODS Activados" data-en="SDGs Activated">ODS Activados</div></div>
+    <div class="hstat"><div class="hstat-n">$8M</div><div class="hstat-l" data-es="Seed Round Activo" data-en="Active Seed Round">Seed Round Activo</div></div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<div id="connect">
+  <div class="connect-inner">
+    <div>
+      <div class="cl-label" data-es="Únete al ecosistema" data-en="Join the ecosystem">Únete al ecosistema</div>
+      <h3 class="cl-title" data-es="Construimos juntas la ciudad que cuida a su gente." data-en="Together we build the city that cares for its people.">Construimos juntas la ciudad que cuida a su gente.</h3>
+      <p class="cl-sub" data-es="Beehavior conecta empresas, mujeres, instituciones e inversores en una sola infraestructura de inteligencia colectiva. Dinos quién eres." data-en="Beehavior connects companies, women, institutions and investors in one collective intelligence infrastructure. Tell us who you are.">Beehavior conecta empresas, mujeres, instituciones e inversores en una sola infraestructura de inteligencia colectiva. Dinos quién eres.</p>
+    </div>
+    <form onsubmit="return false">
+      <div class="role-prompt" data-es="Soy..." data-en="I am...">Soy...</div>
+      <div class="roles" id="roles">
+        <button class="role-btn active" onclick="selectRole(this)" data-es="Empresa" data-en="Company">Empresa</button>
+        <button class="role-btn" onclick="selectRole(this)" data-es="Bee (mujer)" data-en="Bee (woman)">Bee (mujer)</button>
+        <button class="role-btn" onclick="selectRole(this)" data-es="Inversionista" data-en="Investor">Inversionista</button>
+        <button class="role-btn" onclick="selectRole(this)" data-es="Gobierno" data-en="Government">Gobierno</button>
+        <button class="role-btn" onclick="selectRole(this)" data-es="Academia" data-en="Academia">Academia</button>
+        <button class="role-btn" onclick="selectRole(this)" data-es="Aliada" data-en="Partner">Aliada</button>
+        <button class="role-btn" onclick="selectRole(this)" data-es="Otro" data-en="Other">Otro</button>
+      </div>
+      <div class="c-row">
+        <input class="c-input" type="email" id="email-ph" placeholder="tu@email.com">
+        <button class="c-btn" id="c-btn-txt">CONECTAR →</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- FRAMEWORK -->
+<section class="sec" id="framework">
+  <div class="inner">
+    <div class="sec-hdr fi">
+      <div class="eyebrow" data-es="Tecnología propietaria" data-en="Proprietary technology">Tecnología propietaria</div>
+      <h2 class="serif" data-es="El Framework BSS" data-en="The BSS Framework">El Framework BSS</h2>
+      <p class="sec-sub" data-es="Beehavior Strategic Sensemaking — arquitectura cognitiva de 5 capas que convierte señales humanas en inteligencia colectiva accionable. El ECG de las comunidades." data-en="Beehavior Strategic Sensemaking — a 5-layer cognitive architecture that converts human signals into actionable collective intelligence. The ECG of communities.">Beehavior Strategic Sensemaking — arquitectura cognitiva de 5 capas que convierte señales humanas en inteligencia colectiva accionable. El ECG de las comunidades.</p>
+    </div>
+    <div class="fw-layers fi">
+      <div class="fw-layer"><div><div class="fw-num" data-es="Capa 5 — Aplicación" data-en="Layer 5 — Application">Capa 5 — Aplicación</div><div class="fw-name" data-es="Plataformas Inteligentes" data-en="Intelligent Platforms">Plataformas Inteligentes</div></div><div class="fw-desc" data-es="Dashboards de salud comunitaria por colmena. STAY Mood: gamificación de bienestar diario con adherencia garantizada." data-en="Community health dashboards per hive. STAY Mood: daily wellbeing gamification with guaranteed adherence.">Dashboards de salud comunitaria por colmena. STAY Mood: gamificación de bienestar diario con adherencia garantizada.</div><div class="fw-tag">B2B2C</div></div>
+      <div class="fw-layer"><div><div class="fw-num" data-es="Capa 4 — Negocio" data-en="Layer 4 — Business">Capa 4 — Negocio</div><div class="fw-name" data-es="Economía BeeEconomy 33/33/33" data-en="BeeEconomy 33/33/33">Economía BeeEconomy 33/33/33</div></div><div class="fw-desc" data-es="Modelo que convierte datos en dividendos, genera royalties en marcas aliadas y construye progresión hacia activos reales." data-en="Model that converts data into dividends, generates royalties in allied brands and builds progression toward real assets.">Modelo que convierte datos en dividendos, genera royalties en marcas aliadas y construye progresión hacia activos reales.</div><div class="fw-tag">BeeEconomy</div></div>
+      <div class="fw-layer"><div><div class="fw-num" data-es="Capa 3 — Sensemaking" data-en="Layer 3 — Sensemaking">Capa 3 — Sensemaking</div><div class="fw-name" data-es="Motor BSS Propietario" data-en="Proprietary BSS Engine">Motor BSS Propietario</div></div><div class="fw-desc" data-es="Clasifica, embebe y empareja señales humanas. Mide confianza, cooperación, resiliencia y capacidad adaptativa. Trade secret perpetuo. PhD-anchored IP." data-en="Classifies, embeds and matches human signals. Measures trust, cooperation, resilience and adaptive capacity. Perpetual trade secret. PhD-anchored IP.">Clasifica, embebe y empareja señales humanas. Mide confianza, cooperación, resiliencia y capacidad adaptativa. Trade secret perpetuo. PhD-anchored IP.</div><div class="fw-tag" data-es="IP Propia" data-en="Own IP">IP Propia</div></div>
+      <div class="fw-layer"><div><div class="fw-num" data-es="Capa 2 — Datos" data-en="Layer 2 — Data">Capa 2 — Datos</div><div class="fw-name" data-es="Arquitectura de Conocimiento Soberano" data-en="Sovereign Knowledge Architecture">Arquitectura de Conocimiento Soberano</div></div><div class="fw-desc" data-es="Los datos que generan las Bees les pertenecen a las Bees. Integración con Alerta (75k+ registros soberanos, 222 funciones edge)." data-en="The data generated by Bees belongs to Bees. Integration with Alerta (75k+ sovereign records, 222 edge functions).">Los datos que generan las Bees les pertenecen a las Bees. Integración con Alerta (75k+ registros soberanos, 222 funciones edge).</div><div class="fw-tag" data-es="Soberanía" data-en="Sovereignty">Soberanía</div></div>
+      <div class="fw-layer"><div><div class="fw-num" data-es="Capa 1 — Señal" data-en="Layer 1 — Signal">Capa 1 — Señal</div><div class="fw-name" data-es="Red de Captura Humana Diaria" data-en="Daily Human Capture Network">Red de Captura Humana Diaria</div></div><div class="fw-desc" data-es="Check-ins hormonales, misiones colmena, STAY Mood, Vigías cívicas — interacciones diarias que garantizan adherencia y alimentan el motor." data-en="Hormonal check-ins, hive missions, STAY Mood, civic Vigías — daily interactions that guarantee adherence and feed the engine.">Check-ins hormonales, misiones colmena, STAY Mood, Vigías cívicas — interacciones diarias que garantizan adherencia y alimentan el motor.</div><div class="fw-tag" data-es="Adherencia" data-en="Adherence">Adherencia</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="pillars-wrap">
+    <div class="sec-hdr fi">
+      <div class="eyebrow sage" data-es="Sistema socioecológico completo" data-en="Complete socioecological system">Sistema socioecológico completo</div>
+      <h2 class="serif" data-es="Las 4 Capas del Sistema" data-en="The 4 System Layers">Las 4 Capas del Sistema</h2>
+      <p class="sec-sub" data-es="En alianza con Saphi International Holding Corp y Alerta. Lo que nadie más cubre simultáneamente." data-en="In alliance with Saphi International Holding Corp and Alerta. What no one else covers simultaneously.">En alianza con Saphi International Holding Corp y Alerta. Lo que nadie más cubre simultáneamente.</p>
+    </div>
+  </div>
+  <div class="pillars-grid fi">
+    <div class="pillar"><div class="p-icon">🐝</div><div class="p-line" style="background:#B8860A"></div><div class="p-title" style="color:#B8860A" data-es="Personas" data-en="People">Personas</div><div class="p-desc" data-es="BSS Framework: confianza, cooperación, resiliencia. Bienestar hormonal femenino, datos propios, modelo 33/33/33." data-en="BSS Framework: trust, cooperation, resilience. Female hormonal wellbeing, own data, 33/33/33 model.">BSS Framework: confianza, cooperación, resiliencia. Bienestar hormonal femenino, datos propios, modelo 33/33/33.</div></div>
+    <div class="pillar"><div class="p-icon">🤝</div><div class="p-line" style="background:#B85C63"></div><div class="p-title" style="color:#B85C63" data-es="Comunidad" data-en="Community">Comunidad</div><div class="p-desc" data-es="Colmenas corporativas + Vigías cívicos verificados. Inteligencia colectiva del equipo al barrio y la ciudad." data-en="Corporate hives + verified civic Vigías. Collective intelligence from team to neighborhood to city.">Colmenas corporativas + Vigías cívicos verificados. Inteligencia colectiva del equipo al barrio y la ciudad.</div></div>
+    <div class="pillar"><div class="p-icon">🗺️</div><div class="p-line" style="background:#8A6070"></div><div class="p-title" style="color:#8A6070" data-es="Territorio" data-en="Territory">Territorio</div><div class="p-desc" data-es="Alerta: 75k+ registros soberanos, 222 funciones edge. IA soberana que el gobierno opera dentro de sus fronteras." data-en="Alerta: 75k+ sovereign records, 222 edge functions. Sovereign AI that governments operate within their borders.">Alerta: 75k+ registros soberanos, 222 funciones edge. IA soberana que el gobierno opera dentro de sus fronteras.</div></div>
+    <div class="pillar"><div class="p-icon">🌿</div><div class="p-line" style="background:#4A7A52"></div><div class="p-title" style="color:#4A7A52" data-es="Naturaleza" data-en="Nature">Naturaleza</div><div class="p-desc" data-es="Saphi PPE: Economía de Preservación Productiva con comunidades indígenas. Datos ambientales soberanos." data-en="Saphi PPE: Productive Preservation Economics with indigenous communities. Sovereign environmental data.">Saphi PPE: Economía de Preservación Productiva con comunidades indígenas. Datos ambientales soberanos.</div></div>
+  </div>
+  <div style="height:5rem;background:var(--cream2)"></div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="inner" style="padding-bottom:2.5rem">
+    <div class="sec-hdr fi" style="padding-top:5rem">
+      <div class="eyebrow" style="color:#CC7279" data-es="Uso diario · Adherencia garantizada" data-en="Daily use · Guaranteed adherence">Uso diario · Adherencia garantizada</div>
+      <h2 class="serif" style="color:var(--white)" data-es="Resolvemos dolores reales — cada día" data-en="We solve real pain points — every day">Resolvemos dolores reales — cada día</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.48)" data-es="La adherencia diaria es el modelo de negocio. Las mujeres usan Beehavior todos los días porque resuelve lo que nadie más resuelve." data-en="Daily adherence is the business model. Women use Beehavior every day because it solves what no one else solves.">La adherencia diaria es el modelo de negocio. Las mujeres usan Beehavior todos los días porque resuelve lo que nadie más resuelve.</p>
+    </div>
+  </div>
+  <div class="pain-grid fi">
+    <div class="pain-card">
+      <div class="pain-top"><div class="pain-icon-box" style="border-color:var(--gold2);color:var(--gold2)">💊</div><div class="pain-title-txt" style="color:var(--gold2)" data-es="Salud Femenina" data-en="Women's Health">Salud Femenina</div></div>
+      <ul class="pain-list"><li data-es="Ciclo hormonal invisible en el trabajo" data-en="Hormonal cycle invisible at work">Ciclo hormonal invisible en el trabajo</li><li data-es="Climaterio sin acompañamiento clínico" data-en="Menopause without clinical support">Climaterio sin acompañamiento clínico</li><li data-es="Sarcopenia y osteoporosis — nutrición y ejercicios" data-en="Sarcopenia and osteoporosis — nutrition and exercise">Sarcopenia y osteoporosis — nutrición y ejercicios</li><li data-es="Embarazo y lactancia sin red de soporte" data-en="Pregnancy and breastfeeding without support network">Embarazo y lactancia sin red de soporte</li><li data-es="STAY Mood: actividades lúdicas y entretenimiento" data-en="STAY Mood: recreational activities and entertainment">STAY Mood: actividades lúdicas y entretenimiento</li><li data-es="TAC y condición crónica silenciosa" data-en="TAC and silent chronic condition">TAC y condición crónica silenciosa</li></ul>
+      <div class="pain-footer-tag" data-es="TRATAMIENTO DIARIO → INGRESO RÁPIDO" data-en="DAILY TREATMENT → FAST REVENUE">TRATAMIENTO DIARIO → INGRESO RÁPIDO</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-top"><div class="pain-icon-box" style="border-color:var(--rose2);color:var(--rose2)">💰</div><div class="pain-title-txt" style="color:var(--rose2)" data-es="Exclusión Económica" data-en="Economic Exclusion">Exclusión Económica</div></div>
+      <ul class="pain-list"><li data-es="Sin acceso a inversión ni dividendos propios" data-en="No access to investment or own dividends">Sin acceso a inversión ni dividendos propios</li><li data-es="Datos personales explotados sin retorno" data-en="Personal data exploited without return">Datos personales explotados sin retorno</li><li data-es="Sin historial financiero reconocido" data-en="No recognized financial history">Sin historial financiero reconocido</li><li data-es="Empleo informal sin protección colectiva" data-en="Informal employment without collective protection">Empleo informal sin protección colectiva</li><li data-es="Brecha de bienestar vs. productividad laboral" data-en="Wellbeing vs. labor productivity gap">Brecha de bienestar vs. productividad laboral</li><li data-es="Ausencia de capital social medible (tokenomic)" data-en="Absence of measurable social capital (tokenomic)">Ausencia de capital social medible (tokenomic)</li></ul>
+      <div class="pain-footer-tag" data-es="MODELO 33/33/33 → RIQUEZA DISTRIBUIDA" data-en="33/33/33 MODEL → DISTRIBUTED WEALTH">MODELO 33/33/33 → RIQUEZA DISTRIBUIDA</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-top"><div class="pain-icon-box" style="border-color:var(--sage2);color:var(--sage2)">🏙️</div><div class="pain-title-txt" style="color:var(--sage2)" data-es="Desconexión Cívica" data-en="Civic Disconnection">Desconexión Cívica</div></div>
+      <ul class="pain-list"><li data-es="Señales de malestar colectivo sin canal" data-en="Collective distress signals with no channel">Señales de malestar colectivo sin canal</li><li data-es="Barrios sin voz en decisiones municipales" data-en="Neighborhoods with no voice in municipal decisions">Barrios sin voz en decisiones municipales</li><li data-es="Violencia de género no reportada" data-en="Unreported gender violence">Violencia de género no reportada</li><li data-es="Alimentación deficiente sin seguimiento" data-en="Poor nutrition with no tracking">Alimentación deficiente sin seguimiento</li><li data-es="Sedentarismo sin intervención comunal" data-en="Sedentarism without community intervention">Sedentarismo sin intervención comunal</li><li data-es="Comunidad sin cohesión ni identidad medible" data-en="Community without cohesion or measurable identity">Comunidad sin cohesión ni identidad medible</li></ul>
+      <div class="pain-footer-tag" data-es="ALERTA + BEEHAVIOR → BSS EN TIEMPO REAL" data-en="ALERTA + BEEHAVIOR → REAL-TIME BSS">ALERTA + BEEHAVIOR → BSS EN TIEMPO REAL</div>
+    </div>
+  </div>
+  <div style="height:5rem;background:var(--plum)"></div>
+</section>
+
+<!-- ALLIANCES -->
+<section id="alliances">
+  <div class="inner">
+    <div class="sec-hdr fi">
+      <div class="eyebrow gold" data-es="Ecosistema de alianzas" data-en="Alliance ecosystem">Ecosistema de alianzas</div>
+      <h2 class="serif" data-es="Socios que resuelven en cada etapa" data-en="Partners that solve at every stage">Socios que resuelven en cada etapa</h2>
+      <p class="sec-sub" data-es="Cada alianza se integra en plataforma, genera royalties rastreables y alimenta el Framework BSS con datos de comportamiento real." data-en="Every alliance integrates into the platform, generates trackable royalties and feeds the BSS Framework with real behavior data.">Cada alianza se integra en plataforma, genera royalties rastreables y alimenta el Framework BSS con datos de comportamiento real.</p>
+    </div>
+    <div class="all-grid fi">
+      <div class="ally"><div class="ally-badge" data-es="Nutrición · Grupo Francés · LATAM" data-en="Nutrition · French Group · LATAM">Nutrición · Grupo Francés · LATAM</div><div class="ally-name">🥛 Lactalis Group</div><div class="ally-desc" data-es="Soluciones nutricionales clínicas para cada etapa femenina: pubertad, climaterio, sarcopenia, osteoporosis, intolerancia a la lactosa, embarazo, lactancia y TAC. Aliado Nutricional Certificado con tracking en BSS." data-en="Clinical nutritional solutions for every female stage: puberty, menopause, sarcopenia, osteoporosis, lactose intolerance, pregnancy, breastfeeding and CAT. Certified Nutritional Ally with BSS tracking.">Soluciones nutricionales clínicas para cada etapa femenina: pubertad, climaterio, sarcopenia, osteoporosis, intolerancia a la lactosa, embarazo, lactancia y TAC. Aliado Nutricional Certificado con tracking en BSS.</div><div class="ally-royalty" data-es="→ Royalty por compras trazadas vía Beehavior" data-en="→ Royalty on purchases tracked via Beehavior">→ Royalty por compras trazadas vía Beehavior</div></div>
+      <div class="ally"><div class="ally-badge" data-es="Actividad Física · Red Regional LATAM" data-en="Physical Activity · Regional LATAM Network">Actividad Física · Red Regional LATAM</div><div class="ally-name">🏋️ Red de Gimnasios Elite</div><div class="ally-desc" data-es="Red de gimnasios premium en LATAM. Acceso colectivo para Bees, clases en salud femenina hormonal (in house) y datos de actividad integrados al BSS." data-en="Premium gym network in LATAM. Collective access for Bees, hormonal female health classes (in house) and activity data integrated into BSS.">Red de gimnasios premium en LATAM. Acceso colectivo para Bees, clases en salud femenina hormonal (in house) y datos de actividad integrados al BSS.</div><div class="ally-royalty" data-es="→ Royalty por membresías vía colmenas corporativas" data-en="→ Royalty on memberships via corporate hives">→ Royalty por membresías vía colmenas corporativas</div></div>
+      <div class="ally"><div class="ally-badge" data-es="Educación · Certificación Europea" data-en="Education · European Certification">Educación · Certificación Europea</div><div class="ally-name">🎓 Escuela Europea Fitness Femenino</div><div class="ally-desc" data-es="Institución acreditada en fisiología femenina, entrenamiento hormonal y salud musculoesquelética. Bee-trainers = nuevo rol económico en la colmena. Licenciamiento en LATAM." data-en="Accredited institution in female physiology, hormonal training and musculoskeletal health. Bee-trainers = new economic role in the hive. Licensing in LATAM.">Institución acreditada en fisiología femenina, entrenamiento hormonal y salud musculoesquelética. Bee-trainers = nuevo rol económico en la colmena. Licenciamiento en LATAM.</div><div class="ally-royalty" data-es="→ Cursos integrados al track de Riqueza Variable" data-en="→ Courses integrated into Variable Wealth track">→ Cursos integrados al track de Riqueza Variable</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GRANTS -->
+<section id="grants">
+  <div class="inner">
+    <div class="sec-hdr fi">
+      <div class="eyebrow sage" data-es="Pipeline 2026" data-en="2026 Pipeline">Pipeline 2026</div>
+      <h2 class="serif" data-es="6 Concursos mundiales y grants" data-en="6 Global competitions and grants">6 Concursos mundiales y grants</h2>
+    </div>
+    <div class="grants-grid fi">
+      <div class="grant"><div class="grant-ico">🌍</div><div><div class="grant-name">IDB Lab Innovation Challenge</div><div class="grant-sub" data-es="Hasta US$1M · Impacto LATAM" data-en="Up to US$1M · LATAM Impact">Hasta US$1M · Impacto LATAM</div></div></div>
+      <div class="grant"><div class="grant-ico">🏆</div><div><div class="grant-name">MIT Solve Global Challenge</div><div class="grant-sub" data-es="Salud + Género · Red global" data-en="Health + Gender · Global network">Salud + Género · Red global</div></div></div>
+      <div class="grant"><div class="grant-ico">🌱</div><div><div class="grant-name">Skoll Foundation / GLI Summit</div><div class="grant-sub">ODS 5, 8, 10</div></div></div>
+      <div class="grant"><div class="grant-ico">💡</div><div><div class="grant-name">Cartier Women's Initiative</div><div class="grant-sub" data-es="€100K · Fundadoras científicas" data-en="€100K · Science founders">€100K · Fundadoras científicas</div></div></div>
+      <div class="grant"><div class="grant-ico">🚀</div><div><div class="grant-name">WEF Tech Pioneers 2026</div><div class="grant-sub" data-es="Davos · Category Builder" data-en="Davos · Category Builder">Davos · Category Builder</div></div></div>
+      <div class="grant"><div class="grant-ico">🔬</div><div><div class="grant-name">Wellcome Trust HealthTech</div><div class="grant-sub" data-es="Hasta £5M · Salud comunitaria" data-en="Up to £5M · Community health">Hasta £5M · Salud comunitaria</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n rose">300M</div><div class="stat-l" data-es="Mujeres Hispanohablantes" data-en="Spanish-speaking Women">Mujeres Hispanohablantes</div></div>
+    <div class="stat"><div class="stat-n gold">$50T</div><div class="stat-l" data-es="Consumo Anual Controlado" data-en="Annual Spending Controlled">Consumo Anual Controlado</div></div>
+    <div class="stat"><div class="stat-n sage">75k+</div><div class="stat-l" data-es="Registros Soberanos Alerta" data-en="Alerta Sovereign Records">Registros Soberanos Alerta</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--white)">7</div><div class="stat-l" data-es="ODS Activados" data-en="SDGs Activated">ODS Activados</div></div>
+    <div class="stat"><div class="stat-n rose">9</div><div class="stat-l" data-es="Años Trayectoria Saphi" data-en="Years Saphi Track Record">Años Trayectoria Saphi</div></div>
+    <div class="stat"><div class="stat-n sage">4</div><div class="stat-l" data-es="Capas Únicas de Inteligencia" data-en="Unique Intelligence Layers">Capas Únicas de Inteligencia</div></div>
+  </div>
+</div>
+
+<!-- JOIN -->
+<section id="join">
+  <div class="eyebrow" style="text-align:center;margin-bottom:.8rem" data-es="Únete al movimiento" data-en="Join the movement">Únete al movimiento</div>
+  <h2 class="join-t" data-es="Juntas construimos el futuro que las ciudades <em>merecen</em>." data-en="Together we build the future that cities <em>deserve</em>.">Juntas construimos el futuro que las ciudades <em>merecen</em>.</h2>
+  <p class="join-sub" data-es="Beehavior no construye usuarios. Construye comunidades capaces de aprender juntas, prosperar juntas y transformar su entorno." data-en="Beehavior doesn't build users. It builds communities capable of learning together, prospering together and transforming their environment.">Beehavior no construye usuarios. Construye comunidades capaces de aprender juntas, prosperar juntas y transformar su entorno.</p>
+  <a href="#connect" class="join-btn" data-es="EXPLORAR PARTNERSHIP →" data-en="EXPLORE PARTNERSHIP →">EXPLORAR PARTNERSHIP →</a>
+  <div class="invest-cards">
+    <div class="i-card"><div class="i-card-l" data-es="Beehavior · Seed" data-en="Beehavior · Seed">Beehavior · Seed</div><div class="i-card-v">US$8M</div></div>
+    <div class="i-card"><div class="i-card-l" data-es="Series A Target" data-en="Series A Target">Series A Target</div><div class="i-card-v">$125M</div></div>
+    <div class="i-card"><div class="i-card-l" data-es="Múltiplo Revenue" data-en="Revenue Multiple">Múltiplo Revenue</div><div class="i-card-v">25–32x</div></div>
+    <div class="i-card"><div class="i-card-l" data-es="Exit Range (IPO)" data-en="Exit Range (IPO)">Exit Range (IPO)</div><div class="i-card-v">$4B–$15B</div></div>
+    <div class="i-card"><div class="i-card-l" data-es="Piloto Barranco" data-en="Barranco Pilot">Piloto Barranco</div><div class="i-card-v">Q3 2026</div></div>
+    <div class="i-card"><div class="i-card-l" data-es="Alerta · Saphi Seed" data-en="Alerta · Saphi Seed">Alerta · Saphi Seed</div><div class="i-card-v">US$5M</div></div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div id="partners">
+  <div class="partners-inner">
+    <div class="partners-lbl" data-es="Partners Estratégicos" data-en="Strategic Partners">Partners Estratégicos</div>
+    <div class="partners-row">
+      <div class="partner">SAPHI INTERNATIONAL HOLDING CORP</div>
+      <div class="partner">ALERTA · ANTIARI</div>
+      <div class="partner">LACTALIS GROUP</div>
+      <div class="partner">RED DE GIMNASIOS ELITE</div>
+      <div class="partner">ESCUELA EUROPEA FITNESS FEMENINO</div>
+      <div class="partner" data-es="MAPFRE (en negociación)" data-en="MAPFRE (in negotiation)">MAPFRE (en negociación)</div>
+      <div class="partner" data-es="SONY CSL (vía Saphi)" data-en="SONY CSL (via Saphi)">SONY CSL (vía Saphi)</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">🐝 BEEHAVIOR INTELLIGENCE</div>
+      <p class="footer-tag" data-es="Human Collective Intelligence Infrastructure. La capa que mide, modela y fortalece cómo cooperan, confían y evolucionan las comunidades. En alianza con Saphi International Holding Corp." data-en="Human Collective Intelligence Infrastructure. The layer that measures, models and strengthens how communities cooperate, trust and evolve. In alliance with Saphi International Holding Corp.">Human Collective Intelligence Infrastructure. La capa que mide, modela y fortalece cómo cooperan, confían y evolucionan las comunidades. En alianza con Saphi International Holding Corp.</p>
+      <div class="footer-ext">
+        <a href="#">LinkedIn</a>
+        <a href="mailto:ivaneth@beehavior.app">ivaneth@beehavior.app</a>
+        <a href="https://saphi.xyz" target="_blank">Saphi.xyz →</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-lbl" data-es="Explorar" data-en="Explore">Explorar</div>
+      <div class="footer-links">
+        <a href="#framework" data-es="Framework BSS" data-en="BSS Framework">Framework BSS</a>
+        <a href="#solutions" data-es="Soluciones" data-en="Solutions">Soluciones</a>
+        <a href="#alliances" data-es="Alianzas" data-en="Alliances">Alianzas</a>
+        <a href="#grants" data-es="Grants 2026" data-en="Grants 2026">Grants 2026</a>
+        <a href="#" data-es="Investor Room" data-en="Investor Room">Investor Room</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-lbl" data-es="Unirse como" data-en="Join as">Unirse como</div>
+      <div class="footer-links">
+        <a href="#connect" data-es="Empresa (colmena)" data-en="Company (hive)">Empresa (colmena)</a>
+        <a href="#connect" data-es="Bee (prosumidora)" data-en="Bee (prosumer)">Bee (prosumidora)</a>
+        <a href="#connect" data-es="Inversionista" data-en="Investor">Inversionista</a>
+        <a href="#connect" data-es="Gobierno" data-en="Government">Gobierno</a>
+        <a href="#connect" data-es="Aliada de ecosistema" data-en="Ecosystem partner">Aliada de ecosistema</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-lbl" data-es="Equipo" data-en="Team">Equipo</div>
+      <div class="footer-links">
+        <div class="city-row"><span class="city-n">Lima</span><span class="city-t" id="t-lima">--:--</span></div>
+        <div class="city-row"><span class="city-n">Key Biscayne</span><span class="city-t" id="t-miami">--:--</span></div>
+        <div class="city-row"><span class="city-n">Lyon</span><span class="city-t" id="t-lyon">--:--</span></div>
+        <div class="city-row"><span class="city-n">Washington D.C.</span><span class="city-t" id="t-dc">--:--</span></div>
+        <div class="city-row"><span class="city-n">Tokio</span><span class="city-t" id="t-tokyo">--:--</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div data-es="Copyright 2026 © Beehavior Intelligence · Saphi International Holding Corp" data-en="Copyright 2026 © Beehavior Intelligence · Saphi International Holding Corp">Copyright 2026 © Beehavior Intelligence · Saphi International Holding Corp</div>
+    <div class="sdg-row"><span class="sdg">ODS 3</span><span class="sdg">ODS 5</span><span class="sdg">ODS 8</span><span class="sdg">ODS 9</span><span class="sdg">ODS 10</span><span class="sdg">ODS 16</span><span class="sdg">ODS 17</span></div>
+  </div>
+</footer>
+
+<script>
+/* ── PARTICLES ── */
+const canvas=document.getElementById('particle-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,pts=[],mouse={x:-9999,y:-9999};
+const N=80,DIST=130;
+
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+
+class Pt{
+  constructor(init){
+    this.x=Math.random()*W; this.y=init?Math.random()*H:(Math.random()<.5?-5:H+5);
+    this.vx=(Math.random()-.5)*.3; this.vy=(Math.random()-.5)*.3;
+    this.r=Math.random()*1.4+.4;
+    const a=Math.random()*.5+.2;
+    const p=[`rgba(184,92,99,${a})`,`rgba(196,146,10,${a*.7})`,`rgba(107,143,113,${a*.6})`,`rgba(255,255,255,${a*.35})`];
+    this.col=p[Math.floor(Math.random()*p.length)];
+  }
+  update(){
+    const dx=mouse.x-this.x,dy=mouse.y-this.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<180&&d>0){this.vx+=dx/d*.01;this.vy+=dy/d*.01}
+    this.vx*=.982;this.vy*=.982;
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<-10||this.x>W+10||this.y<-10||this.y>H+10){this.x=Math.random()*W;this.y=Math.random()<.5?-5:H+5}
+  }
+  draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.col;ctx.fill()}
+}
+
+function init(){resize();pts=[];for(let i=0;i<N;i++)pts.push(new Pt(true))}
+function anim(){
+  ctx.clearRect(0,0,W,H);
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<DIST){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(184,92,99,${(1-d/DIST)*.15})`;ctx.lineWidth=.55;ctx.stroke()}
+  }
+  pts.forEach(p=>{p.update();p.draw()});
+  requestAnimationFrame(anim);
+}
+window.addEventListener('resize',()=>resize());
+const hero=document.getElementById('hero');
+window.addEventListener('mousemove',e=>{if(e.clientY<hero.offsetHeight){mouse.x=e.clientX;mouse.y=e.clientY}else{mouse.x=-9999;mouse.y=-9999}},{passive:true});
+init();anim();
+
+/* ── NAV ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>80),{passive:true});
+
+/* ── ROLE ── */
+function selectRole(btn){document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+
+/* ── CITIES ── */
+function tick(){
+  const f=tz=>new Date().toLocaleTimeString('es-PE',{timeZone:tz,hour:'2-digit',minute:'2-digit'});
+  document.getElementById('t-lima').textContent=f('America/Lima');
+  document.getElementById('t-miami').textContent=f('America/New_York');
+  document.getElementById('t-lyon').textContent=f('Europe/Paris');
+  document.getElementById('t-dc').textContent=f('America/New_York');
+  document.getElementById('t-tokyo').textContent=f('Asia/Tokyo');
+}
+tick();setInterval(tick,30000);
+
+/* ── SCROLL FADE ── */
+new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.08}).observe.bind(new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.08}));
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+/* ── LANGUAGE TOGGLE ── */
+let lang='es';
+function toggleLang(){
+  lang=lang==='es'?'en':'es';
+  document.getElementById('lang-toggle').textContent=lang==='es'?'EN':'ES';
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(!val)return;
+    if(el.tagName==='INPUT'){el.placeholder=val}
+    else if(el.tagName==='BUTTON'||el.tagName==='A'||el.innerHTML.includes('<em>')||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='H3'||el.tagName==='P'){el.innerHTML=val}
+    else{el.textContent=val}
+  });
+  // placeholder email
+  const ph=document.getElementById('email-ph');
+  if(ph)ph.placeholder=lang==='es'?'tu@email.com':'your@email.com';
+}
+</script>
+</body>
 </html>
